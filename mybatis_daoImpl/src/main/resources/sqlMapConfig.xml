@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- mybatis 主配置文件。-->
+<configuration>
+    <!-- 配置环境。-->
+    <environments default="development">
+        <!-- 配置 MySQL 的环境。可以配置多个，具体使用哪个以 <environments default="development"> 的选择为准。-->
+        <environment id="development">
+            <!-- 配置事务的类型。-->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源。有 3 种。POOLED, UNPOOLED, JNDI。-->
+            <dataSource type="POOLED"><!-- MySQL 连接参数。-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.223.128:3306/mybatis_demo"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 指定映射配置文件的位置。映射配置文件指的是每个 dao 独立的配置文件。-->
+    <mappers>
+        <!--<mapper resource="com/geek/dao/IUserDao.xml"/>-->
+
+        <!-- 如果是用注解，此处应该使用 class 属性指定被注解的 dao 全限定类名。-->
+        <mapper class="com.geek.dao.IUserDao"/>
+    </mappers>
+
+</configuration>
+
+        <!--
+
+        <configuration>
+            <environments default="">
+                <environment io="">
+                    <transactionManager type=""></transactionManager>
+                    <dataSource type=""></dataSource>
+                </environment>
+            </environments>
+        </configuration>
+        -->
+
+
+        <!--
+        <configuration>
+        <environments default="development">
+        <environment io="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+        </environments>
+                </configuration>
+
+        -->
